@@ -6,6 +6,8 @@ Like in a chat client, the user uses an input field at the bottom of the page to
 
 Users can issue commands to a persistant forking shell process, preserving environment variables, current directory, and other state.
 
+You could use this as a way to securely use a shell on a remote machine through a browser. If the domain is set up with TLS/SSL/HTTPS and .htaccess support, this project also serves as ssh in a browser.
+
 ## Installation
 
 Clone the repo and `cd`. `npm install`. Then [download `nw.io`](http://nwjs.io/) to the penultimate directory and run it.
@@ -23,6 +25,10 @@ Traditional terminals put the edit cursor any old place depending on how tall th
 ### Persistent "status blocks"
 
 Persistent _status blocks_ along the right side of the screen keep up-to-date information about the current directory, git index, and anything else the user wants to track (WIP). No more `clear && ls` habit.
+
+### Host doesn't have to be the client
+
+You can use this as a remote shell, even a secure one if .htaccess and SSL are properly configured. (In this case, just run as a regular node app, ignoring nw.js a.k.a. node-webkit.)
 
 ## Inspiration
 
