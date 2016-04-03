@@ -76,6 +76,8 @@ Some items on the Penultimate wishlist:
   - color support with [node-ansi](https://github.com/echicken/node-ansi) or [ansi-to-html](https://github.com/rburns/ansi-to-html)
   - use [is-thirteen](https://github.com/jezen/is-thirteen) to test for enter keypresses (keycode `13`)
 
+![Bash under Penultimate](https://raw.githubusercontent.com/qguv/penultimate/master/bash.png)
+
 ## Soylent Art
 
 We [tweeted](https://twitter.com/reggae_snacks/status/716427863910653952) @Soylent with our Soylent art. They re-tweeted it!
