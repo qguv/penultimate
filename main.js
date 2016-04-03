@@ -1,70 +1,42 @@
 'use strict';
 
-const electron = require('electron');
-// const pty = require('pty.js');
-const ipc = electron.ipcMain;
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const pty = require('pty.js');
+const Convert = require('ansi-to-html');
+var strip = require('strip-color');
+var convert = new Convert();
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let mainWindow;
+var command = $('#command');
+var outputs = $('#outputs');
 
-// let term = pty.spawn('bash', [], {
-//   name: 'xterm-color',
-//   cols: 80,
-//   rows: 30,
-//   cwd: process.env.HOME,
-//   env: process.env
-// });
-
-// term.on('data', function(data) {
-//   console.log(data);
-// });
-
-ipc.on('terminalReturn', function(event, val) {
-  console.log(val);
-  var result = 'success!';
-  event.sender.send('terminalResponse', result);
+var term = pty.spawn('bash', [], {
+  name: 'xterm',
+  cols: 80,
+  rows: 30,
+  cwd: process.env.HOME,
+  env: process.env
 });
 
-function createWindow () {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
-    width: 800, 
-    height: 600,
-    autoHideMenuBar: true
-  });
-
-  // and load the index.html of the app.
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
-
-  // Emitted when the window is closed.
-  mainWindow.on('closed', function() {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    mainWindow = null;
-  });
-}
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-app.on('ready', createWindow);
-
-// Quit when all windows are closed.
-app.on('window-all-closed', function () {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit();
+term.on('data', function(data) {
+  var val = convert.toHtml(data);
+  // hack: get rid of notifies
+  if (val.substring(0, 4) !== "]777") {
+    outputs.append('<div>' + val + '</div>');
   }
 });
 
-app.on('activate', function () {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
-    createWindow();
+command.on('keydown', function(e) {
+  if (e.which === 13) {
+    if (command.val().length > 0) {
+      term.write(command.val() + '\r');
+      command.val('');
+    }
   }
 });
+
+command.on('keyup', function(e) {
+  if (e.which === 13) {
+    command.val('');
+  }
+});
+
+term.write('ls\r');
