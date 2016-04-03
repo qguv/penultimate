@@ -63,9 +63,9 @@ Quint brushed up on his node.js, process management, and flexbox styling (pre-20
 
 ## What's next for Penultimate
 
-Penultimate's source is available [on Github](https://github.com/qguv/penultimate). We built Penultimate because we want to build a better CLI experience, so Patches are very much welcome.
+Penultimate's source is available [on Github](https://github.com/qguv/penultimate). We built penultimate because we want to build a better CLI experience, so Patches are very much welcome.
 
-Some items on the Penultimate wishlist:
+Some items on the penultimate wishlist:
 
   - support user-configurable status blocks (currently `ls` and `git status` are displayed on the right)
   - support more user customization, especially with color
