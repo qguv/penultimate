@@ -5,8 +5,8 @@ const Convert = require('ansi-to-html');
 var strip = require('strip-color');
 var convert = new Convert();
 
-var command = $('#command');
-var outputs = $('#outputs');
+var command = $('#prompt');
+var outputs = $('#execs');
 var returner;
 
 // Set up bash
@@ -17,8 +17,7 @@ var bash = spawn('bash', [], {
 
 bash.stdout.on('data', function(d) {
   var data = d.toString('ascii');
-  console.log(data);
-  $(returner).text(data);
+  returner.text(data);
 });
 
 function createSidebar(cmd, el) {
@@ -36,21 +35,25 @@ function createSidebar(cmd, el) {
   return sidebar;
 }
 
-var ls = createSidebar("ls", "#ls-output")
+// var ls = createSidebar("ls", "#ls-output")
 
 function writeStdin(cmd) {
-  bash.stdin.write(cmd + "\n");
-
   var args = cmd.split(' ');
-  cmd = args.shift();
+  var command = args.shift();
+  console.log(args);
 
-  var el = $('<div class="output"></div>');
-  el.append('<span class="command">' + cmd + '</span>');
+  var el = $('.exec').clone().first();
+  el.find('.command').text(command);
+  var args_text = '';
   for (var i=0; i < args.length; i++) {
-    el.append('<span class="args"> ' + args[i] + '</span>');
+    args_text += ' ' + args[i];
   }
-  
-  $('#outputs').append(el);
+  el.find('.args').text(args_text);
+
+  returner = el.find("pre");
+  returner.text("");
+  bash.stdin.write(cmd + "\n");
+  $('#execs').append(el);
 }
 
 command.on('keydown', function(e) {
