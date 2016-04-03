@@ -27,7 +27,7 @@ body {
   font-size: 16px;
 }
 
-div#status-blocks, textarea#command, span#prompt {
+div#status-blocks, input#command, span#prompt {
   background: #444;
 }
 
@@ -56,7 +56,8 @@ div.output {
   border-radius: 4px;
 }
 
-textarea#command {
+input#command {
+  font-size: 16px;
   width: auto;
   padding: 0.5em;
   color: white;
@@ -71,7 +72,7 @@ span#prompt {
   text-align: center;
 }
 
-pre, .output, textarea {
+pre, .output, input {
   font-family: Inconsolata, Inconsolata-dz, "Droid Sans Mono", monospace;
 }
 
