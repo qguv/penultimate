@@ -44,16 +44,33 @@ div#io {
   width: 100%;
 }
 
-div#outputs {
+div#execs {
   height: 100%;
+  overflow-y: scroll;
 }
 
-div.output {
-  padding: 0.5em;
+div.exec {
   width: auto;
   margin: 1em;
+  align-items: flex-start;
+}
+
+div.input, pre.output {
+  padding: 0.5em;
+}
+
+div.input {
+  background: #333;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+pre.output {
+  width: 90%;
+  margin-top: 0;
   background: #444;
   border-radius: 4px;
+  border-top-left-radius: 0;
 }
 
 input#command {
@@ -72,7 +89,7 @@ span#prompt {
   text-align: center;
 }
 
-pre, .output, input {
+pre, .exec, input {
   font-family: Inconsolata, Inconsolata-dz, "Droid Sans Mono", monospace;
 }
 
