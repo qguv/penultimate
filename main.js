@@ -22,9 +22,9 @@ let mainWindow;
 //   console.log(data);
 // });
 
-ipc.on('terminalReturn', function(event, arg) {
-  console.log(arg);
-  result = 'something';
+ipc.on('terminalReturn', function(event, val) {
+  console.log(val);
+  var result = 'success!';
   event.sender.send('terminalResponse', result);
 });
 
