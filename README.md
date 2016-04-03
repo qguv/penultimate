@@ -1,4 +1,4 @@
-# Penultimate
+![Penultimate](https://raw.githubusercontent.com/qguv/penultimate/master/logo.png)
 
 ## Inspiration
 
@@ -9,6 +9,8 @@ Today's terminals are a relic of the serial `tty`s and `vt`s of early UNIX. Term
 Besides interactive terminal applications and GUI terminal emulators, the command-line user experience hasn't changed much since the late '70s.
 
 ## What it does
+
+TODO: gameplay gif
 
 ## How we built it
 
@@ -37,4 +39,7 @@ Some items on the Penultimate wishlist:
   - support more user customization, especially with color
   - experiment with alternative layouts
     - try inverting the order that outputs are entered
-    - 
+    - try moving the input bar to the top
+  - ssh login (needs ssh-client on node server)
+  - color support with [node-ansi](https://github.com/echicken/node-ansi) or [ansi-to-html](https://github.com/rburns/ansi-to-html)
+  - use [is-thirteen](https://github.com/jezen/is-thirteen) to test for enter keypresses (keycode `13`)
