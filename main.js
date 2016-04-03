@@ -1,6 +1,6 @@
 'use strict';
 
-const pty = require('pty.js');
+const spawn = require('child_process').spawn
 const Convert = require('ansi-to-html');
 var strip = require('strip-color');
 var convert = new Convert();
@@ -8,35 +8,37 @@ var convert = new Convert();
 var command = $('#command');
 var outputs = $('#outputs');
 
-var term = pty.spawn('bash', [], {
-  name: 'xterm',
-  cols: 80,
-  rows: 30,
-  cwd: process.env.HOME,
-  env: process.env
+// Set up bash
+var bash = spawn('bash', [], {
+  env: process.env,
+  cwd: process.env.HOME
 });
 
-term.on('data', function(data) {
-  var val = convert.toHtml(data);
-  // hack: get rid of notifies
-  if (val.substring(0, 4) !== "]777") {
-    outputs.append('<div>' + val + '</div>');
+function write_stdin(cmd) {
+  bash.stdin.write(cmd + "\n");
+
+  var args = cmd.split(' ');
+  cmd = args.shift();
+
+  var el = $('<div class="output"></div>');
+  el.append('<span class="command">' + cmd + '</span>');
+  for (var i=0; i < args.length; i++) {
+    el.append('<span class="args"> ' + args[i] + '</span>');
   }
-});
+  
+  $('#outputs').append(el);
+
+  var func = bash.stdout.on('data', function(d) {
+    var data = d.toString('ascii');
+    bash.stdout.removeListener("data", func);
+  });
+}
 
 command.on('keydown', function(e) {
   if (e.which === 13) {
     if (command.val().length > 0) {
-      term.write(command.val() + '\r');
+      write_stdin(command.val());
       command.val('');
     }
   }
 });
-
-command.on('keyup', function(e) {
-  if (e.which === 13) {
-    command.val('');
-  }
-});
-
-term.write('ls\r');
