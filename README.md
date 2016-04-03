@@ -26,6 +26,10 @@ Traditional terminals put the edit cursor any old place depending on how tall th
 
 Persistent _status blocks_ along the right side of the screen keep up-to-date information about the current directory, git index, and anything else the user wants to track (WIP). No more `clear && ls` habit.
 
+### Status display
+
+Commands are marked with a checkmark if they succeed; i.e. their exit code is zero. (graceful failure is, as always, WIP)
+
 ### Host doesn't have to be the client
 
 You can use this as a remote shell, even a secure one if .htaccess and SSL are properly configured. (In this case, just run as a regular node app, ignoring nw.js a.k.a. node-webkit.)
