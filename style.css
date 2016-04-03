@@ -1,0 +1,97 @@
+.flex-vertical, .flex-horizontal {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-vertical {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+/* explicit is better than implicit */
+.flex-horizontal {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: #222222;
+  color: white;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 16px;
+}
+
+div#status-blocks, textarea#command, span#prompt {
+  background: #444;
+}
+
+div#wrapper {
+  height: 100%;
+}
+
+div#status-blocks {
+  border-left: 10px solid #333;
+  width: 350px;
+}
+
+div#io {
+  width: 100%;
+}
+
+div#outputs {
+  height: 100%;
+}
+
+div.output {
+  padding: 0.5em;
+  width: auto;
+  margin: 1em;
+  background: #444;
+  border-radius: 4px;
+}
+
+textarea#command {
+  width: auto;
+  padding: 0.5em;
+  color: white;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+span#prompt {
+  height: 100%;
+  text-align: center;
+}
+
+pre, .output, textarea {
+  font-family: Inconsolata, Inconsolata-dz, "Droid Sans Mono", monospace;
+}
+
+div#vcs pre {
+  margin-left: 1em;
+}
+
+h2 {
+  margin-top: 0;
+  width: auto;
+  background: #333;
+  font-family: "Droid Sans", sans-serif;
+  font-weight: 300;
+  padding: 0.2em 0.5em;
+}
+
+#vcs, #fs {
+  height: 50%;
+}
+
+span.command {
+  font-weight: bold;
+}

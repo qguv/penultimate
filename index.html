@@ -2,32 +2,54 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>penultimate:</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Penultimate</title>
+    <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
-    <div id="term"></div>
-    <input id="command"></input>
+
+    <div id="wrapper" class="flex-container flex-horizontal">
+
+      <div id="io" class="flex-container flex-vertical">
+        <div id="outputs">
+          <div class="output">
+            <span class="command">mv</span>
+            <span class="args">test.txt test_moved.txt</span>
+          </div>
+          <div class="output">
+            <span class="command">cd</span>
+            <span class="args">test_dir</span>
+          </div>
+        </div>
+
+        <div id="input flex-container flex-horizontal">
+          <textarea id="command" autofocus=true></textarea>
+        </div>
+      </div>
+
+      <!-- status block container -->
+      <div id="status-blocks" class="flex-container flex-vertical">
+
+        <div id="fs">
+          <h2 id="fs-label">FS</h2>
+          <ul id="fs-list">
+            <li>a file here</li>
+            <li>a file here</li>
+            <li>a file here</li>
+            <li>a file here</li>
+            <li>a file here</li>
+          </ul>
+        </div>
+
+        <div id="vcs">
+          <h2 id="vcs-label">Git</h2>
+          <pre id="vcs-status">
+ M index.html
+?? index.js
+?? style.css
+          </pre>
+        </div>
+      </div>
+    </div>
   </body>
-
-  <script>
-  var ipc = require('electron').ipcRenderer;
-  var enter = document.getElementById('command');
-  var term = document.getElementById('term');
-
-  enter.addEventListener('keydown', function(e) {
-    if (e.which === 13) {
-      if (enter.value.length > 0) {
-        ipc.send('terminalReturn', enter.value);
-        enter.value = '';
-      }
-    }
-  });
-
-  ipc.on('terminalResponse', function(event, val) {
-    var response = document.createElement("div");
-    var node = document.createTextNode(val);
-    response.appendChild(node);
-    term.appendChild(response);
-  });
-  </script>
 </html>
