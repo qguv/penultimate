@@ -11,20 +11,21 @@
     <div id="wrapper" class="flex-container flex-horizontal">
 
       <div id="io" class="flex-container flex-vertical">
-        <div id="outputs">
-          <div class="output">
-            <span class="command">mv</span>
-            <span class="args">test.txt test_moved.txt</span>
+        <div id="execs">
+
+          <!-- an individual shell command prototype -->
+          <div class="exec flex-container flex-vertical">
+            <div class="input">
+              <span class="command">ls</span>
+              <span class="args">-l --si</span>
+            </div>
+            <pre class="output">test.txt     test3.txt    test5.txt
+test2.txt    test4.txt    test6.txt</pre>
           </div>
-          <div class="output">
-            <span class="command">cd</span>
-            <span class="args">test_dir</span>
-          </div>
+
         </div>
 
-        <div id="input flex-container flex-horizontal">
-          <input id="command" autofocus="true"></input>
-        </div>
+        <input id="prompt" autofocus="true"></input>
       </div>
 
       <!-- status block container -->
