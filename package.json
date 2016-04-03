@@ -1,10 +1,9 @@
 {
-  "name": "nw-demo",
+  "name": "penultimate",
   "version": "0.0.1",
   "main": "index.html",
   "dependencies": {
     "ansi-to-html": "^0.4.1",
-    "pty.js": "^0.3.0",
     "strip-color": "^0.1.0"
   }
 }

@@ -8,13 +8,13 @@
   </head>
   <body>
 
-    <div id="wrapper" class="flex-container flex-horizontal">
+    <div id="wrapper" class="flex-horizontal">
 
-      <div id="io" class="flex-container flex-vertical">
+      <div id="io" class="flex-vertical">
         <div id="execs">
 
           <!-- an individual shell command prototype -->
-          <div class="exec flex-container flex-vertical">
+          <div class="exec flex-vertical ptype" hidden>
             <div class="input">
               <span class="command">ls</span>
               <span class="args">-l --si</span>
@@ -25,23 +25,37 @@ test2.txt    test4.txt    test6.txt</pre>
 
         </div>
 
-        <input id="prompt" autofocus="true"></input>
+        <div class="flex-horizontal">
+          <input id="prompt" autofocus></input>
+          <button id="clear">clear</button>
+          <button id="re-attach">re-attach</button>
+        </div>
+
       </div>
 
       <!-- status block container -->
-      <div id="status-blocks" class="flex-container flex-vertical">
+      <div id="status-blocks" class="flex-vertical">
 
-        <div id="fs">
-          <h2 id="fs-label">FS</h2>
-          <pre id="ls-output">
-          </pre>
+        <div class="status-block">
+          <h2>ls</h2>
+          <pre>test.txt     test4.txt
+test2.txt    test5.txt
+test3.txt    test6.txt</pre>
+        </div>
+        <div class="status-block">
+          <h2>git status -s</h2>
+            <pre> M README.md
+ M index.html
+ M main.js
+M  package.json
+ M style.css
+?? nwjs.app/</pre>
+        </div>
+        <div class="status-block">
+          <h2>./test.hs</h2>
+          <pre>121/142 pass</pre>
         </div>
 
-        <div id="vcs">
-          <h2 id="vcs-label">Git</h2>
-          <pre id="git-output">
-          </pre>
-        </div>
       </div>
     </div>
 
