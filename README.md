@@ -77,9 +77,3 @@ Some items on the Penultimate wishlist:
   - use [is-thirteen](https://github.com/jezen/is-thirteen) to test for enter keypresses (keycode `13`)
 
 ![Bash under Penultimate](https://raw.githubusercontent.com/qguv/penultimate/master/bash.png)
-
-## Soylent Art
-
-We [tweeted](https://twitter.com/reggae_snacks/status/716427863910653952) @Soylent with our Soylent art. They re-tweeted it!
-
-<img src="https://raw.githubusercontent.com/qguv/penultimate/master/soylent_art.jpg" alt="Art on a bottle of Soylent" height="400"></img>
