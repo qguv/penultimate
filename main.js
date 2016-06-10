@@ -1,8 +1,9 @@
 'use strict';
 
 const spawn = require('child_process').spawn
+const strip = require('strip-color');
+
 const Convert = require('ansi-to-html');
-var strip = require('strip-color');
 var convert = new Convert();
 
 var command = $('#prompt');
@@ -32,6 +33,9 @@ $("#clear").click(function () {
   $(".exec:not(.ptype)").remove();
 });
 
+function exname(cmd) {
+  return cmd.substr(0, cmd.indexOf(' '));
+}
 
 function createSidebar(cmd) {
   var sb = {};
@@ -73,6 +77,7 @@ function writeStdin(cmd) {
   el.find('.args').text(args_text);
 
   returner = el.find("pre");
+  returner.addClass(exname(cmd));
   returner.text("");
   bash.stdin.write(cmd + "\n");
 
@@ -89,6 +94,7 @@ function writeStdin(cmd) {
       //ls.update();
       //git.update();
   }
+  el.find('.input');
   $('#execs').append(el);
 }
 
