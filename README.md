@@ -8,6 +8,8 @@ Users can issue commands to a persistant forking shell process, preserving envir
 
 You could use this as a way to securely use a shell on a remote machine through a browser. If the domain is set up with TLS/SSL/HTTPS and .htaccess support, this project also serves as ssh in a browser.
 
+![Bash under Penultimate](https://raw.githubusercontent.com/qguv/penultimate/master/bash.png)
+
 ## Installation
 
 Clone the repo and `cd`. `npm install`. Then [download `nw.io`](http://nwjs.io/) to the penultimate directory and run it.
@@ -75,5 +77,3 @@ Some items on the Penultimate wishlist:
   - ssh login (needs ssh-client on node server)
   - color support with [node-ansi](https://github.com/echicken/node-ansi) or [ansi-to-html](https://github.com/rburns/ansi-to-html)
   - use [is-thirteen](https://github.com/jezen/is-thirteen) to test for enter keypresses (keycode `13`)
-
-![Bash under Penultimate](https://raw.githubusercontent.com/qguv/penultimate/master/bash.png)
